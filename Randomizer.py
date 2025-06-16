@@ -1,17 +1,34 @@
 import tkinter as tk
 import random
 
+# Predefined neon colors for a vibrant look on a dark background
+NEON_COLORS = [
+    "#39FF14",  # neon green
+    "#FF3131",  # neon red
+    "#9D00FF",  # neon purple
+    "#00FFFF",  # aqua
+    "#FFD300",  # bright yellow
+]
+
 def update_label():
-    number = random.randint(1, 100)
-    label.config(text=number)
-    window.after(3000, update_label)
+    """Update the label with a random number and color."""
+    number = random.randint(0, 100)
+    color = random.choice(NEON_COLORS)
+    label.config(text=number, fg=color)
+    window.after(5000, update_label)
 
 window = tk.Tk()
-window.geometry("200x100")
-window.title("Random Number Generator")
+window.geometry("300x150")
+window.title("Poker Randomizer")
+window.configure(bg="black")
 
-label = tk.Label(window, text="", font=("Arial", 30))  # ここでフォントサイズを30に設定
-label.pack(pady=20)
+label = tk.Label(
+    window,
+    text="",
+    font=("Helvetica", 40, "bold"),
+    bg="black",
+)
+label.pack(expand=True)
 
 update_label()
 
